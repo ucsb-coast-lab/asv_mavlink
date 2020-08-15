@@ -33,7 +33,7 @@ impl Attitude {
     }
 }
 
-pub fn parse_attitude_message_30(
+pub fn parse_attitude_data_30(
     msg: &mavlink::common::MavMessage,
 ) -> Result<Attitude, Box<dyn Error>> {
     let data = mavlink::common::MavMessage::parse(
@@ -85,7 +85,7 @@ impl GPS {
     }
 }
 
-pub fn parse_gps_message_33(msg: &mavlink::common::MavMessage) -> Result<GPS, Box<dyn Error>> {
+pub fn parse_gps_data_33(msg: &mavlink::common::MavMessage) -> Result<GPS, Box<dyn Error>> {
     let data = mavlink::common::MavMessage::parse(
         mavlink::MavlinkVersion::V2,
         msg.message_id(),

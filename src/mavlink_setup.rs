@@ -38,9 +38,9 @@ pub fn request_stream() -> mavlink::common::MavMessage {
 pub fn system_arm() -> mavlink::common::MavMessage {
     println!("- Sending system ARM command");
     mavlink::common::MavMessage::COMMAND_LONG(mavlink::common::COMMAND_LONG_DATA {
-        param1: 1.0, // This parameter sets it to arm for 1.0
-        param2: 0.0, // Not forcing it to override safeties
-        param3: 0.0, 
+        param1: 1.0, // ? // This parameter sets it to arm for 1.0
+        param2: 0.0, // ? // Not forcing it to override safeties
+        param3: 0.0,
         param4: 0.0,
         param5: 0.0,
         param6: 0.0,
@@ -56,9 +56,9 @@ pub fn system_arm() -> mavlink::common::MavMessage {
 pub fn system_disarm() -> mavlink::common::MavMessage {
     println!("- Sending system DISARM command");
     mavlink::common::MavMessage::COMMAND_LONG(mavlink::common::COMMAND_LONG_DATA {
-        param1: 0.0, // 0.0 disarms the system
-        param2: 0.0, // Yes, we want it to override anything else that's going on
-        param3: 0.0, 
+        param1: 0.0,     // 0.0 disarms the system
+        param2: 21196.0, // Yes, we want it to override anything else that's going on
+        param3: 0.0,
         param4: 0.0,
         param5: 0.0,
         param6: 0.0,
@@ -80,10 +80,10 @@ pub fn manual_control(
     target: u8,
 ) -> mavlink::common::MavMessage {
     mavlink::common::MavMessage::MANUAL_CONTROL(mavlink::common::MANUAL_CONTROL_DATA {
-        x: (x * 100.0) as i16, // x, with range from [-1000,1000]
-        y: (y * 100.0) as i16, // y, with range from [-1000,1000]
-        z: (z * 100.0) as i16, // z, with range from [0,1000]
-        r: (r * 100.0) as i16, // rotation r, with range from cw<-[-1000,1000]->ccw
+        x: x as i16, // x, with range from [-1000,1000]
+        y: y as i16, // y, with range from [-1000,1000]
+        z: z as i16, // z, with range from [0,1000] NOTE: Not sure if this is true for V2/0.8.5
+        r: r as i16, // rotation r, with range from cw<-[-1000,1000]->ccw
         buttons: buttons,
         target: target,
     })
