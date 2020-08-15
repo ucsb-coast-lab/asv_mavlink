@@ -1,0 +1,11 @@
+[package]
+name = "asv_control"
+version = "0.1.0"
+authors = ["Christopher Moran <christophermoran@ucsb.edu"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+mavlink = "0.8.5"
+simple-signal = "1.1.1"
